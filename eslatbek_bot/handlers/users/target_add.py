@@ -8,7 +8,7 @@ from keyboards.default.defoult_btn import menu_btn
 from keyboards.inline.inline_btn import get_target_btn, choose_weekday_btn, choose_hours_btn, get_calendar
 
 
-@dp.message_handler(text="➕ Yangi target qo'shish", state=None)
+@dp.message_handler(text="💡 Yangi maqsad qo'shish", state=None)
 async def add_target(message: types.Message, state=FSMContext):
     await message.answer("Maqsadingiz nomini kiriting", reply_markup=types.ReplyKeyboardRemove())
     await state.set_state("add_target")

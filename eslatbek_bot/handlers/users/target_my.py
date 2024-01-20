@@ -6,7 +6,7 @@ from loader import dp, bot
 from data.api import get_my_targets, delete_target, get_weekdays
 
 
-@dp.message_handler(text="My Targets 📝")
+@dp.message_handler(text="📝 Mening maqsadlarim")
 async def View_My_Targets(message: types.Message, state=FSMContext):
     targets = await get_my_targets(message.from_user.id)
     if targets:
@@ -15,7 +15,7 @@ async def View_My_Targets(message: types.Message, state=FSMContext):
         await state.set_state("get_my_targets")
     else:
         await message.answer("Sizning Maqsadlaringiz yo'q 😢.", reply_markup=menu_btn)
-        
+
 @dp.message_handler(text="🔙 Ortga", state="get_my_targets")
 async def my_targets(message: types.Message, state=FSMContext):
     await message.answer("Menu", reply_markup=menu_btn)
@@ -28,17 +28,17 @@ async def my_targets(message: types.Message, state=FSMContext):
     if not targets:
         await message.answer("Sizda hali maqsadlar yo'q 🥲.")
         return
-    
-    
+
+
     selected_target = message.text
     tar = ""
     for i in targets:
         if selected_target == i['name']:
             weekdays = await get_weekdays()
             hafta_kunlari = ", ".join(a['weekday'] for a in weekdays if a['id'] in i['weekday'])
-            print(hafta_kunlari)
-            print(i['weekday'])
-            
+            # print(hafta_kunlari)
+            # print(i['weekday'])
+
             tar += f"⚙️ <b>Nomi: </b> {i['name']}\n"
             tar += f"🔘 <b>Tavsifi: </b>{i['description']}\n"
             tar += f"📆 <b>Hafta kunlari:</b> {hafta_kunlari}\n"
@@ -55,18 +55,18 @@ async def my_targets(message: types.Message, state=FSMContext):
                 tar += f"🔴 <b>Status:</b> Tugagan\n\n"
                 await message.answer(tar)
             break
-  
-        
+
+
     await state.set_state("get_my_targets")
-    
-    
+
+
 @dp.callback_query_handler(text_contains="delete", state="get_my_targets")
 async def delete_target_func(call: types.CallbackQuery, state=FSMContext):
     target_id = call.data.split("_")[1]
     await delete_target(target_id)
     await call.message.delete()
     await call.message.answer("Target o'chirildi ✅")
-    
+
     targets = await get_my_targets(call.from_user.id)
     if targets:
         await call.message.answer("Sizning Targetlariz: ", reply_markup=get_my_targets_btn(targets['user_targets']))
@@ -75,7 +75,6 @@ async def delete_target_func(call: types.CallbackQuery, state=FSMContext):
     else:
         await call.message.answer("Sizning Targetlariz yo'q", reply_markup=menu_btn)
         await state.finish()
-        
-    
-    
-    
+
+
+

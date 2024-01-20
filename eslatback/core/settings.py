@@ -34,12 +34,6 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-    # 'https://eslatbek.husanibragimov.uz/',
-    # 'http://127.0.0.1',
-    # 'http://localhost',
-# ]
-
 # Application definition
 
 INSTALLED_APPS = [

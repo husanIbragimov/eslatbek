@@ -3,10 +3,10 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 menu_btn = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="My Targets 📝"),
+            KeyboardButton(text="📝 Mening maqsadlarim"),
         ],
         [
-            KeyboardButton(text="➕ Yangi target qo'shish"),
+            KeyboardButton(text="💡 Yangi maqsad qo'shish"),
         ],
         [
             KeyboardButton(text="👤 Ma'lumotlarim"),
