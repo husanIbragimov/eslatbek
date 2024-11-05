@@ -113,6 +113,22 @@ DATABASES = {
         'PASSWORD': os.getenv('PASSWORD'),
         'HOST': 'localhost',
         'PORT': 5432,
+    },
+    'replica_1': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('REPLICA_NAME_1'),
+        'USER': os.getenv('REPLICA_DBUSER'),
+        'PASSWORD': os.getenv('REPLICA_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': 5432,
+    },
+    'replica_2': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('REPLICA_NAME_2'),
+        'USER': os.getenv('REPLICA_DBUSER'),
+        'PASSWORD': os.getenv('REPLICA_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
 
